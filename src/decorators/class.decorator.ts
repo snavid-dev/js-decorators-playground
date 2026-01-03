@@ -31,8 +31,16 @@ function logMethod() {
         const originalMethod = descriptor.value;
 
         descriptor.value = function (...args: any[]) {
-            console.log(`method${propertyKey} called with args: ${JSON.stringify(args)}`);
-            return originalMethod.apply(this, args);
+
+            const start = Date.now();
+            console.log(start);
+
+            const result = originalMethod.apply(this, args);
+
+            const end = Date.now();
+            console.log(end)
+
+            console.log(`Method ${propertyKey} executed in ${end - start} ms`);
         }
     }
 }
