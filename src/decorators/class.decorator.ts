@@ -8,3 +8,14 @@ class UserService {
 }
 
 
+// Example of a parameterized class decorator
+function Logger(prefix: string) {
+    return function (constructor: Function) {
+        console.log(`${prefix} - Class ${constructor.name} has been created.`);
+    }
+}
+
+@Logger('INFO')
+class ProductService {
+
+}
